@@ -7,14 +7,8 @@
 </head>
 <body>
 
-    <!-- <form onsubmit="event.preventDefault(); sendChampion()">
-        <input type="text" name="champion">
-        <button> new champion</button> 
-    </form> -->
-
     <form onsubmit="event.preventDefault(); sendChampion()">
         <select name="champion">
-            <!-- Liste manuelle des champions -->
             <option value="Aatrox">Aatrox</option>
             <option value="Ahri">Ahri</option>
             <option value="Akali">Akali</option>
@@ -44,7 +38,6 @@
             <option value="Evelynn">Evelynn</option>
             <option value="Ezreal">Ezreal</option>
             <option value="Fiddlesticks">Fiddlesticks</option>
-            <!-- Ajoutez d'autres champions ici -->
         </select>
         <button onclick="sendChampion()"> Ajouter champion</button> 
     </form>
@@ -85,38 +78,7 @@
             "Ezreal": "Marksman",
             "Fiddlesticks": "Mage"
         };
-
-        // fetch('http://localhost:3000/champions')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         let champions = document.querySelector('#champions')
-        //         data.forEach(champion => {
-        //             champions.innerHTML += `
-        //                 <div>
-        //                     <a href="champion.html?id=${champion.id}">
-        //                         <h2>${champion.name}</h2>
-        //                         <h2>${champion.type}</h2>
-        //                     </a>
-        //                 </div>
-        //             `
-        //         })
-        //     })
-
-        //     const sendChampion = async() => {
-        //         event.preventDefault()
-        //         let champion = document.querySelector('input[name=champion]').value
-        //         await fetch('http://localhost:3000/champions', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify({name: champion, type: champion})
-        //         })
-        //         window.location.href = 'index.html'
-        //     }
-
-        
+    
         fetch('http://localhost:3000/champions')
             .then(response => response.json())
             .then(data => {

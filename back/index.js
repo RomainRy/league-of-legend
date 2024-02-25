@@ -10,18 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
-// console.log('Hello there!');
-
-// app.get("/champions", (req, res) => {
-//     res.send([
-//         'Arhi',
-//         'Nami',
-//         'Xerath',
-//         'Zed',
-//     ]);
-// }), 
-
-
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
   });
