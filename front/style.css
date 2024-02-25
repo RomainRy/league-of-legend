@@ -1,0 +1,71 @@
+body {
+    background-color: #1c1c1e; 
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+div#champions div{
+    border: 1px solid #ffffff;
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 50px;
+    width: 300px;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+select, button {
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #3b3b3b;
+    color: #ffffff;
+}
+
+select:hover, button:hover {
+    background-color: #4d4d4d;
+}
+
+#champions {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.champion {
+    background-color: #28282a; 
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
