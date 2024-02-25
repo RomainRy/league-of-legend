@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <form onsubmit="event.preventDefault(); sendChampion()">
+        <input type="text" name="champion">
+        <button> new champion</button> 
+    </form> -->
+
+    <form onsubmit="event.preventDefault(); sendChampion()">
+        <select name="champion">
+            <!-- Liste manuelle des champions -->
+            <option value="Aatrox">Aatrox</option>
+            <option value="Ahri">Ahri</option>
+            <option value="Akali">Akali</option>
+            <option value="Alistar">Alistar</option>
+            <option value="Amumu">Amumu</option>
+            <option value="Anivia">Anivia</option>
+            <option value="Annie">Annie</option>
+            <option value="Aphelios">Aphelios</option>
+            <option value="Ashe">Ashe</option>
+            <option value="Aurelion Sol">Aurelion Sol</option>
+            <option value="Azir">Azir</option>
+            <option value="Bard">Bard</option>
+            <option value="Blitzcrank">Blitzcrank</option>
+            <option value="Brand">Brand</option>
+            <option value="Braum">Braum</option>
+            <option value="Caitlyn">Caitlyn</option>
+            <option value="Camille">Camille</option>
+            <option value="Cassiopeia">Cassiopeia</option>
+            <option value="Chogath">Cho'Gath</option>
+            <option value="Corki">Corki</option>
+            <option value="Darius">Darius</option>
+            <option value="Diana">Diana</option>
+            <option value="Draven">Draven</option>
+            <option value="Dr. Mundo">Dr. Mundo</option>
+            <option value="Ekko">Ekko</option>
+            <option value="Elise">Elise</option>
+            <option value="Evelynn">Evelynn</option>
+            <option value="Ezreal">Ezreal</option>
+            <option value="Fiddlesticks">Fiddlesticks</option>
+            <!-- Ajoutez d'autres champions ici -->
+        </select>
+        <button onclick="sendChampion()"> Ajouter champion</button> 
+    </form>
+
+    
+    <h1>Liste des Champions</h1>
+    <div id="champions"></div>
+    <script>
+
+    const championTypes = {
+            "Aatrox": "Fighter",
+            "Ahri": "Mage",
+            "Akali": "Assassin",
+            "Alistar": "Support",
+            "Amumu": "Tank",
+            "Anivia": "Mage",
+            "Annie": "Mage",
+            "Aphelios": "Marksman",
+            "Ashe": "Marksman",
+            "Aurelion Sol": "Mage",
+            "Azir": "Mage",
+            "Bard": "Support",
+            "Blitzcrank": "Tank",
+            "Brand": "Mage",
+            "Braum": "Support",
+            "Caitlyn": "Marksman",
+            "Camille": "Fighter",
+            "Cassiopeia": "Mage",
+            "Chogath": "Tank",
+            "Corki": "Marksman",
+            "Darius": "Fighter",
+            "Diana": "Fighter",
+            "Draven": "Marksman",
+            "Dr. Mundo": "Fighter",
+            "Ekko": "Assassin",
+            "Elise": "Mage",
+            "Evelynn": "Assassin",
+            "Ezreal": "Marksman",
+            "Fiddlesticks": "Mage"
+        };
+
+        // fetch('http://localhost:3000/champions')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         let champions = document.querySelector('#champions')
+        //         data.forEach(champion => {
+        //             champions.innerHTML += `
+        //                 <div>
+        //                     <a href="champion.html?id=${champion.id}">
+        //                         <h2>${champion.name}</h2>
+        //                         <h2>${champion.type}</h2>
+        //                     </a>
+        //                 </div>
+        //             `
+        //         })
+        //     })
+
+        //     const sendChampion = async() => {
+        //         event.preventDefault()
+        //         let champion = document.querySelector('input[name=champion]').value
+        //         await fetch('http://localhost:3000/champions', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({name: champion, type: champion})
+        //         })
+        //         window.location.href = 'index.html'
+        //     }
+
+        
+        fetch('http://localhost:3000/champions')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                let championsDiv = document.querySelector('#champions');
+                data.forEach(champion => {
+                    champions.innerHTML += `
+                        <div>
+                            <a href="champion.html?id=${champion.id}">
+                                <h2>${champion.name}</h2>
+                                <h2>${champion.type}</h2>
+                            </a>
+                        </div>
+                    `
+                })
+            })
+
+
+            const sendChampion = async () => {
+                event.preventDefault();
+                let championSelect = document.querySelector('select[name=champion]');
+                let championName = championSelect.value;
+                let championType = championTypes[championName];
+            
+            const response = await fetch('http://localhost:3000/champions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: championName, type: championType })
+                });
+                window.location.href = 'index.html';
+        };
+
+    </script>
+
+</body>
+</html>
